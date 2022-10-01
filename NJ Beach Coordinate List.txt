@@ -1,0 +1,55 @@
+Atlantic City	39.35509	-74.429796
+Avalon	39.093731	-74.716779
+Avon-By-The-Sea	40.190581	-74.008856
+Barnegate Light	39.753003	-74.103573
+Belmar	40.180219	-74.011677
+Brigantine Beach	39.402226	-74.366169
+City of Wildwood	38.987801	-74.804731
+Island Beach State Park	39.856173	-74.085336
+North Wildwood	38.998191	-74.790923
+Ocean City	39.265678	-74.588151
+Sandy Hook 	40.446171	-73.98438
+Sea Isle City	39.156559	-74.687944
+Ventnor City	39.337098	-74.476105
+Wildwood Crest	38.967415	-74.832819
+Allenhurst	40.235544	-73.995045
+Asbury Park	40.223282	-73.997788
+Bay Head	40.06976	-74.041721
+Beach Haven	39.559958	-74.237094
+Beach Haven Crest	39.607758	-74.202531
+Beach Haven Gardens	39.580931	-74.22203
+Beach Haven Park	39.595336	-74.212253
+Beach Haven Terrace	39.58441	-74.220083
+Bradley Beach	40.201716	-74.006312
+Brant Beach	39.620242	-74.194727
+Brighton Beach	39.600058	-74.208003
+Cape May	38.929486	-74.924362
+Corsons Inlet State Park	39.214807	-74.642122
+Deal	40.251111	-73.990225
+Harvey Cedars	39.697766	-74.136892
+Holgate	39.557613	-74.238798
+Loch Arbour	40.231877	-73.996184
+Long Beach Township	39.613084	-74.199297
+Long Branch	40.302585	-73.977358
+Longport	39.309422	-74.526983
+Manasquan	40.110972	-74.032717
+Mantoloking	40.042892	-74.047856
+Margate	39.324023	-74.503338
+Monmouth Beach	40.333041	-73.972948
+North Beach	39.678539	-74.150333
+North Beach Haven	39.600323	-74.208055
+Ocean Grove	40.212827	-74.002038
+Ortley Beach	39.953863	-74.068047
+Peahala Park	39.60031	-74.207666
+Point Pleasant Beach	40.09113	-74.036766
+Sea Bright	40.375216	-73.973618
+Sea Girt	40.127891	-74.02932
+Seaside Park	39.932345	-74.072417
+Seven Presidents Oceanfront Park	40.314983	-73.976597
+Spray beach	39.578054	-74.224821
+Spring Lake	40.151054	-74.021686
+Stone Harbor	39.05298	-74.754209
+Strathmere Beach	39.189689	-74.661473
+Surf City	39.660993	-74.163554
+White Sands beach	39.907109	-74.077924
+Windward Beach	40.056593	-74.111403

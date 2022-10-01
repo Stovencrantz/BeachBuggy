@@ -1,22 +1,29 @@
+import { obtainFile } from "./loadFile";
+
 const container = document.querySelector(".container");
 
-const beaches = [
-  {
-    name: "Atlantic City",
-    lat: "39.35509",
-    lon: "-74.429796",
-  },
-  {
-    name: "Avalon",
-    lat: "39.093731",
-    lon: "-74.716779",
-  },
-  {
-    name: "Avon-By-The-Sea",
-    lat: "40.190581",
-    lon: "-74.008856",
-  }
-];
+const beaches = function loadBeaches() {
+  fetch('./NJ Beach Coordinate List.txt')
+  .then(response => response.text())
+  .then((text) => {
+      let arr = [];
+      let textArrayRows = text.split(/\r?\n/);
+      for(let i=0; i<textArrayRows.length;i++) {
+          let locationArr = textArrayRows[i].split("\t");
+          arr.push({
+                  name: locationArr[0],
+                  lat: locationArr[1],
+                  lon: locationArr[2]
+              });
+      }
+
+      return arr;
+  })
+}
+function prntBeaches(obtainFile) {
+  console.log(obtainFile);
+}
+
 // const showCoffees = () => {
 //   let output = "";
 //   coffees.forEach(
