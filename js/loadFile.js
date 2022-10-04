@@ -1,4 +1,4 @@
-module.exports = function obtainFile() {
+function obtainFile() {
     fetch('./NJ Beach Coordinate List.txt')
     .then(response => response.text())
     .then((text) => {

@@ -1,28 +1,4 @@
-import { obtainFile } from "./loadFile";
-
 const container = document.querySelector(".container");
-
-const beaches = function loadBeaches() {
-  fetch('./NJ Beach Coordinate List.txt')
-  .then(response => response.text())
-  .then((text) => {
-      let arr = [];
-      let textArrayRows = text.split(/\r?\n/);
-      for(let i=0; i<textArrayRows.length;i++) {
-          let locationArr = textArrayRows[i].split("\t");
-          arr.push({
-                  name: locationArr[0],
-                  lat: locationArr[1],
-                  lon: locationArr[2]
-              });
-      }
-
-      return arr;
-  })
-}
-function prntBeaches(obtainFile) {
-  console.log(obtainFile);
-}
 
 // const showCoffees = () => {
 //   let output = "";
@@ -53,43 +29,45 @@ if ("serviceWorker" in navigator) {
 // script for getting users current position
 var x = document.getElementById("location");
 
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0,
-};
+let beaches = [];
 
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
+function loadBeaches() {
+  fetch('./NJ Beach Coordinate List.txt')
+  .then(response => response.text())
+  .then((text) => {
+      let textArrayRows = text.split(/\r?\n/);
+      for(let i=0; i<textArrayRows.length;i++) {
+          let locationArr = textArrayRows[i].split("\t");
+          beaches.push({
+                  name: locationArr[0],
+                  lat: locationArr[1],
+                  lon: locationArr[2]
+              });
+      }
+      return beaches;
+  })
 }
-
-function success(pos) {
-  const crd = pos.coords;
-
-  console.log("Your current position is: ");
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude : ${crd.longitude}`);
-  console.log(`More of less ${crd.accuracy} meters.`);
-
-  let api = "8988ce4587b71b5353869d036e2f9471";
-
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${crd.latitude}&lon=${crd.longitude}&appid=${api}`
-  )
-    .then((response) => {
-      // handle the response
-      console.log("response work");
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log("Is broken");
-    });
-}
+// Load beaches from NJ Beach Coordinate file on page load
+loadBeaches();
 
 function getBeaches() {
-  console.log(beaches);
-  
 
+  let beachesDropdown = document.querySelector(".dropdown-menu")
+
+console.log(beaches)
+  let beachList = beaches.map((beach) => {
+    let beachItem = document.createElement("a");
+    beachItem.classList.add("dropdown-item");
+    beachItem.href = "#";
+    beachItem.textContent = beach.name;
+    return beachItem;
+  })
+
+  beachesDropdown.append(...beachList);
+}
+
+
+function getBeachData() {
   let api = "8988ce4587b71b5353869d036e2f9471";
 
   fetch(
@@ -98,23 +76,9 @@ function getBeaches() {
     .then((response) => {
       // handle the response
       console.log("response work");
-      console.log(response)
+      console.log(response);
     })
     .catch((error) => {
       console.log("Is broken");
     });
-
-}
-
-
-async function getLocation() {
-  navigator.geolocation.getCurrentPosition(success, error);
-}
-
-function showPosition(position) {
-  x.innerHTML =
-    "Latitude: " +
-    position.coords.latitude +
-    "<br>Longitude: " +
-    position.coords.longitude;
 }
