@@ -25,7 +25,7 @@
     <meta name="theme-color" content="#db4938" />
     <title>Beach Buggy</title>
   </head>
-  <body>
+  <body onload = "loadBeaches()">
     <main>
       <nav>
         <h1>BeachBuggy</h1>
@@ -37,30 +37,20 @@
         <div class="row">
           <p>Click the button to get your coordinates.</p>
 
-          <button class="btn btn-primary" onclick="getBeaches()">
+          <button class="btn btn-primary" onclick="">
             Try It
           </button>
         </div>
         <div class="row">
-          <div class="dropdown show">
-            <a
-              class="btn btn-secondary dropdown-toggle"
-              href="#"
-              role="button"
-              id="dropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Dropdown link
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
+          <select class="form-select" aria-label="Default select example" onchange="console.log(this.value)">
+            <option value="none">Select a beach</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="beachLocation">
+            <p>Lat: <span class="beachLat"></span></p>
+            <p>Lon: <span class="beachLon"></span></p>
+         </div>
         </div>
         <div class="row"><div id="locationWeather"></div></div>
       </div>

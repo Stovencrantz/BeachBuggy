@@ -26,10 +26,8 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-// script for getting users current position
-var x = document.getElementById("location");
-
 let beaches = [];
+// Load beaches from NJ Beach Coordinate file on page load
 
 function loadBeaches() {
   fetch('./NJ Beach Coordinate List.txt')
@@ -46,26 +44,28 @@ function loadBeaches() {
       }
       return beaches;
   })
+  .then(() => getBeaches());
+
 }
-// Load beaches from NJ Beach Coordinate file on page load
-loadBeaches();
+
 
 function getBeaches() {
 
-  let beachesDropdown = document.querySelector(".dropdown-menu")
-
-console.log(beaches)
+  let beachesDropdown = document.querySelector(".form-select")
+  console.log(beaches)
   let beachList = beaches.map((beach) => {
-    let beachItem = document.createElement("a");
-    beachItem.classList.add("dropdown-item");
-    beachItem.href = "#";
+    let beachItem = document.createElement("option");
+    beachItem.addEventListener('click', () => console.log('test'))
+
+    beachItem.value = beach.name;
     beachItem.textContent = beach.name;
+    
     return beachItem;
   })
 
   beachesDropdown.append(...beachList);
-}
 
+}
 
 function getBeachData() {
   let api = "8988ce4587b71b5353869d036e2f9471";
@@ -82,3 +82,4 @@ function getBeachData() {
       console.log("Is broken");
     });
 }
+
