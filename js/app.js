@@ -14,7 +14,6 @@ const container = document.querySelector(".container");
 //   );
 //   container.innerHTML = output;
 // };
-
 // document.addEventListener("DOMContentLoaded", showCoffees);
 
 if ("serviceWorker" in navigator) {
@@ -26,8 +25,8 @@ if ("serviceWorker" in navigator) {
   });
 }
 
+// Load beaches into array 'beaches' from NJ Beach Coordinate file on page //load
 let beaches = [];
-// Load beaches from NJ Beach Coordinate file on page load
 
 function loadBeaches() {
   fetch('./NJ Beach Coordinate List.txt')
@@ -45,14 +44,12 @@ function loadBeaches() {
       return beaches;
   })
   .then(() => getBeaches());
-
 }
 
-
+// populate the dropdown with the list of beaches in our array
 function getBeaches() {
 
   let beachesDropdown = document.querySelector(".form-select")
-  console.log(beaches)
   let beachList = beaches.map((beach) => {
     let beachItem = document.createElement("option");
     beachItem.addEventListener('click', () => console.log('test'))
@@ -67,19 +64,48 @@ function getBeaches() {
 
 }
 
+// search the openweather api for the lat / lon based on what beach the user selected in the dropdown
 function getBeachData() {
   let api = "8988ce4587b71b5353869d036e2f9471";
+  console.log("beaches: ", beaches);
 
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${beaches[0].lat}&lon=${beaches[0].lon}&appid=${api}`
-  )
-    .then((response) => {
-      // handle the response
-      console.log("response work");
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log("Is broken");
-    });
+  // Validate that the user selection matches a beach in our array, if so run an api query with its lat and lon
+  
+  let dropdownValue = document.querySelector(".form-select").value;
+  for (let i=0; i<beaches.length; i++) {
+    if (beaches[i].name == dropdownValue) {
+      console.log("succcess: " + beaches[i].name + " : " + dropdownValue);
+
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${beaches[i].lat}&lon=${beaches[i].lon}&appid=${api}`
+      )
+         // convert the response body to json
+        .then((response) => response.json())
+        .then((data) => {
+          // handle the response
+          console.log("response work");
+          console.log(data);
+          populateWeatherFields(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        break;
+    } 
+  }
 }
 
+function populateWeatherFields(data) {
+  let lat = document.querySelector('.beachLat');
+  let lon = document.querySelector('.beachLon');
+  let weather = document.querySelector('.weather');
+  let windDir = document.querySelector('.windDir');
+  let windSpeed = document.querySelector('.windSpeed');
+
+  //console.log ('data:', data)
+  lat.textContent = data.coord.lat;
+  lon.textContent = data.coord.lon;
+  weather.textContent = data.weather[0].description;
+  windDir.textContent = data.wind.deg;
+  windSpeed.textContent = data.wind.speed;
+}

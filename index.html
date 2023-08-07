@@ -8,9 +8,9 @@
     <link rel="manifest" href="manifest.json" />
     <!-- CSS only -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
     <!-- ios support -->
@@ -25,34 +25,52 @@
     <meta name="theme-color" content="#db4938" />
     <title>Beach Buggy</title>
   </head>
-  <body onload = "loadBeaches()">
+  <body onload="loadBeaches()">
     <main>
       <nav>
         <h1>BeachBuggy</h1>
-        <ul>
-          <li>test</li>
-        </ul>
       </nav>
-      <div class="container">
-        <div class="row">
-          <p>Click the button to get your coordinates.</p>
+      <div class="container-fluid">
+        <div class="row" id="actionItems">
+          <div class="col-6" id="currLocation">
+            <div>
+              <p>Click the button to get your coordinates.</p>
 
-          <button class="btn btn-primary" onclick="">
-            Try It
-          </button>
+              <button class="btn btn-primary" onclick="getBeachData()">
+                Try It
+              </button>
+            </div>
+          </div>
+          <div class="col-6" id="beachDropdown">
+            <div>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                onchange="getBeachData()"
+              >
+                <option value="none">Select a beach</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <select class="form-select" aria-label="Default select example" onchange="console.log(this.value)">
-            <option value="none">Select a beach</option>
-          </select>
+
+        <div class="row" id="textFields">
+          <div class="col-6" id="currLocationText">
+            <div class="currBeachLocation">
+              <p>Lat: <span class="currBeachLat"></span></p>
+              <p>Lon: <span class="currBeachLon"></span></p>
+            </div>
+          </div>
+          <div class="col-6" id="DropdownText">
+            <div class="beachLocation">
+              <p>Lat: <span class="beachLat"></span></p>
+              <p>Lon: <span class="beachLon"></span></p>
+              <p>Weather: <span class="weather"></span></p>
+              <p>Wind Direction: <span class="windDir"></span></p>
+              <p>Wind Speed: <span class="windSpeed"></span></p>
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <div class="beachLocation">
-            <p>Lat: <span class="beachLat"></span></p>
-            <p>Lon: <span class="beachLon"></span></p>
-         </div>
-        </div>
-        <div class="row"><div id="locationWeather"></div></div>
       </div>
     </main>
     <script

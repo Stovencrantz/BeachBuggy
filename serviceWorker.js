@@ -14,7 +14,6 @@
 //   "/images/coffee8.jpg",
 //   "/images/coffee9.jpg"
 // ];
-
 // self.addEventListener("install", installEvent => {
 //   installEvent.waitUntil(
 //     caches.open(staticDevCoffee).then(cache => {
@@ -22,7 +21,6 @@
 //     })
 //   );
 // });
-
 // self.addEventListener("fetch", fetchEvent => {
 //   fetchEvent.respondWith(
 //     caches.match(fetchEvent.request).then(res => {
