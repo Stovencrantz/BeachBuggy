@@ -96,16 +96,19 @@ function getBeachData() {
 }
 
 function populateWeatherFields(data) {
-  let lat = document.querySelector('.beachLat');
-  let lon = document.querySelector('.beachLon');
-  let weather = document.querySelector('.weather');
-  let windDir = document.querySelector('.windDir');
-  let windSpeed = document.querySelector('.windSpeed');
+  //const lat = document.querySelector('.beachLat');
+  //const lon = document.querySelector('.beachLon');
+  const image = document.querySelector('.weather-box img');
+  const temperature = document.querySelector('.weather-box .temperature');
+  const weather = document.querySelector('.weather-box .description');
+  const humidity = document.querySelector('.weather-details .humidity span');
+  const wind = document.querySelector('.weather-details .wind span');
 
   //console.log ('data:', data)
-  lat.textContent = data.coord.lat;
-  lon.textContent = data.coord.lon;
+  //lat.textContent = data.coord.lat;
+  //lon.textContent = data.coord.lon;
+  temperature.textContent = data.main.temp;
+  humidity.textContent = data.main.humidity;
   weather.textContent = data.weather[0].description;
-  windDir.textContent = data.wind.deg;
-  windSpeed.textContent = data.wind.speed;
+  wind.textContent = data.wind.speed;
 }

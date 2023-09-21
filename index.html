@@ -30,33 +30,43 @@
       <nav>
         <h1>BeachBuggy</h1>
       </nav>
-      <div class="container-fluid">
-        <div class="row justify-content-md-center" id="actionItems">
-          <div class="col-6" id="beachDropdown">
-            <div>
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                onchange="getBeachData()"
-              >
-                <option value="none">Select a beach</option>
-              </select>
-            </div>
+      <div class="container">
+        <div id="beachDropdown">
+          <div>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              onchange="getBeachData()"
+            >
+              <option value="none">Select a beach</option>
+            </select>
           </div>
         </div>
 
-        <div class="row justify-content-md-center" id="textFields">
-          <div class="col-6" id="DropdownText">
-            <div class="beachLocation">
-              <p>Lat: <span class="beachLat"></span></p>
-              <p>Lon: <span class="beachLon"></span></p>
-              <p>Weather: <span class="weather"></span></p>
-              <p>Wind Direction: <span class="windDir"></span></p>
-              <p>Wind Speed: <span class="windSpeed"></span></p>
-            </div>
-          </div>
+        <div class="weather-box">
+            <img src="" alt="">
+            <p class="temperature"></p>
+            <p class="description"></p>
         </div>
-      </div>
+
+        <div class="weather-details">
+            <div class="humidity">
+                <i class="fa-solid fa-water"></i>
+                <div class="text">
+                    <span></span>
+                    <p>Humidity</p>
+                </div>
+            </div>
+            <div class="wind">
+                <i class="fa-solid fa-wind"></i>
+                <div class="text">
+                    <span></span>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </main>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
