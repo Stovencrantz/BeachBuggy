@@ -100,15 +100,50 @@ function populateWeatherFields(data) {
   //const lon = document.querySelector('.beachLon');
   const image = document.querySelector('.weather-box img');
   const temperature = document.querySelector('.weather-box .temperature');
-  const weather = document.querySelector('.weather-box .description');
+  const description = document.querySelector('.weather-box .description');
   const humidity = document.querySelector('.weather-details .humidity span');
   const wind = document.querySelector('.weather-details .wind span');
+
+  const container = document.querySelector('.container');
+  const dropdownBox = document.querySelector('.dropdown-box');
+  const weatherBox = document.querySelector('.weather-box');
+  const weatherDetails = document.querySelector('.weather-details');
 
   //console.log ('data:', data)
   //lat.textContent = data.coord.lat;
   //lon.textContent = data.coord.lon;
-  temperature.textContent = data.main.temp;
-  humidity.textContent = data.main.humidity;
-  weather.textContent = data.weather[0].description;
-  wind.textContent = data.wind.speed;
+  switch (data.weather[0].main) {
+    case 'Clear':
+      image.src = 'images/clear.png';
+      break;
+    
+    case 'Rain':
+      image.src = 'images/rain.png';
+      break;
+    
+    case 'Snow':
+      image.src = 'images/snow.png';
+      break;
+
+    case 'Clouds':
+      image.src = 'images/clouds.png';
+      break;
+
+    case 'Haze':
+      image.src = 'images/haze.png';
+      break;
+
+    default:
+      image.src = '';
+  }
+  const kToF = (data.main.temp-273.15)*(9/5)+32;
+  temperature.innerHTML = `${parseInt(kToF)}<span>°F</span>`;
+  humidity.innerHTML = `${data.main.humidity}%`;
+  description.innerHTML = data.weather[0].description;
+  wind.innerHTML = `${parseInt(data.wind.speed)}Km/h`;
+
+  weatherBox.style.display = '';
+  weatherDetails.style.display = '';
+  weatherBox.classList.add('fadeIn');
+  container.style.height = '590px';
 }
